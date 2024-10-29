@@ -15,6 +15,7 @@ let fakeDuration = 600;
 
 //サークルの青線の長さを変える
 //点線としてびょうがする。偶数版と奇数版を両方入れるイメージ
+// cssの勉強が必要
 outline.style.strokeDashoffset = outlineLength;
 outline.style.strokeDasharray = outlineLength;
 
@@ -64,22 +65,25 @@ sounds.forEach(sound => {
 
 
 // 時間変更
-//fakeduration の中身を書き換えて長さを変更
+//時間を描写する。
 timeSelect.forEach(option => {
-    option.addEventListener("click", function() {
-      fakeDuration = this.getAttribute("data-time");
-      timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${Math.floor(
-        fakeDuration % 60
-      )}`;
-    });
+  option.addEventListener("click", function() {
+    //fakeduration の中身を書き換えて長さを変更
+    fakeDuration = this.getAttribute("data-time");
+    timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${Math.floor(
+      fakeDuration % 60
+    )}`;
   });
+});
 
   song.ontimeupdate = function() {
     let currentTime = song.currentTime;
-    let elapsed = fakeDuration - currentTime;
+    let elapsed = fakeDuration - currentTime;//経過時間
     let seconds = Math.floor(elapsed % 60);
     let minutes = Math.floor(elapsed / 60);
     timeDisplay.textContent = `${minutes}:${seconds}`;
+    
+    //線の進み具合を時間を割合を使って変更する。
     let progress = outlineLength - (currentTime / fakeDuration) * outlineLength;
     outline.style.strokeDashoffset = progress;
   
