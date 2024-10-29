@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>poppingball-9-27</title>
+    <link rel="stylesheet" href="./poppingball.css">
+
+
+    <script src="poppingball.js" defer></script>
+
+</head>
+
+<body>
+
+    <body>
+        
+        <h1>なんで文字がぼやけるの？？</h1>
+        <canvas></canvas>
+    
+    <script type="module">
+// 練習の為に読み込む。意味はない。
+        async function loadJSON() {
+            const response = await fetch('./poppingball.json');
+            const balls = await response.json();
+            console.log(balls);
+
+        }
+        loadJSON();
+    </script>
+</body>
+
+</html>
