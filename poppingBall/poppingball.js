@@ -87,6 +87,8 @@ function loop() {
         ball.draw();
         ball.update();
     }
+    // ブラウザのフレーム更新ごとに、HTMLのロードを邪魔しないように（）を実行する。
     requestAnimationFrame(loop)
+    
 }
 loop();
